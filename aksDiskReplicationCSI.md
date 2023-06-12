@@ -143,7 +143,7 @@ CSI driver created a remote snapshot but in order to create a PVC from the remot
 - Create a static PV from the new disk
 - Create a PVC from the static PV
 
-Sample command to create a disk from the remote snapshot
+Sample command to create a disk from the remote snapshot (syntax with an example)
 
 ```
 az disk create --resource-group aksrgstorage --name azdisk-created-from-snapshot-v4  --sku Premium_LRS --size-gb 8 --source resourceidofsnapshot  --location westus2
