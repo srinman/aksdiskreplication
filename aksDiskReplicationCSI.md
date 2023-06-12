@@ -1,10 +1,7 @@
-# AKS Managed Disk Replication with CSI driver   
+# Implementation Steps for Azure Managed Disk replication with CSI driver
 
 
 ## Pre-requisites
-- VolumeSnapshotClass with remote region and resource group
-
-
 
 ### Define StorageClass
 
