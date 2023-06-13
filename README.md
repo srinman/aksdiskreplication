@@ -1,4 +1,4 @@
-# AKS Managed Disk Replication with CSI driver   
+# AKS Managed Disk Cross-region Replication with CSI driver   
 
 
 ## Pre-requisites
