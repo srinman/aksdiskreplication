@@ -1,10 +1,20 @@
 # AKS Managed Disk Cross-region Replication with CSI driver   
 
+With a new feature recently added to AKS Disk CSI driver, it's possible to create a snapshot of a managed disk in one region and replice it to a different region. Review references section links for more details.
 
 ## Pre-requisites
 - VolumeSnapshotClass with remote region and resource group
 - Cluster identity should be provided 'Contributor' role to the resource group 
 - This resource group contains source managed disk, snapshot and remote snapshot
+
+## References
+https://github.com/kubernetes-sigs/azuredisk-csi-driver/pull/1791
+ 
+https://learn.microsoft.com/en-us/azure/virtual-machines/disks-copy-incremental-snapshot-across-regions?tabs=azure-cli
+
+https://azure.microsoft.com/en-us/blog/announcing-general-availability-of-incremental-snapshots-of-managed-disks/
+
+https://azure.microsoft.com/en-us/blog/announcing-general-availability-of-incremental-snapshots-of-managed-disks/ 
 
 
 
