@@ -95,7 +95,10 @@ parameters:
 
 ### Create remote snapshot
 
-
+- Create as many snapshots as needed for the volume (PVC)
+- Use different names for each VolumeSnapshot  for eg. azuredisk-volume-snapshot-nginxss-1-remote-v1, azuredisk-volume-snapshot-nginxss-1-remote-v2, etc.
+- Schedule VolumeSnapshot to create snapshots on a regular basis or with Velero
+- Use VolumeSnapshotContent to check the status of the snapshot creation if needed
 ```
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
@@ -145,10 +148,9 @@ CSI driver created a remote snapshot but in order to create a PVC from the remot
 Sample command to create a disk from the remote snapshot
 ```
 az disk create --resource-group aksrgstorage --name azdisk-created-from-snapshot-v4  --sku Premium_LRS --size-gb 8 --source resourceidofsnapshot  --location westus2
-
-az disk create --resource-group aksrgstorage --name azdisk-created-from-snapshot-v5  --sku Premium_LRS --size-gb 8 --source  /subscriptions/0q39874098374/resourceGroups/AKSRGSTORAGE/providers/Microsoft.Compute/snapshots/snapshot-etestset --location westus2
-
 ```
+
+
 
 Sample PV and PVC definition
 ```
