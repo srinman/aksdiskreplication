@@ -1,5 +1,8 @@
 # AKS Managed Disk Cross-region Replication with CSI driver   
 
+
+
+
 With a new feature recently added to AKS Disk CSI driver, it's possible to create a snapshot of a managed disk in one region and replicate it to a different region. Review references section links for more details.
 
 ## Pre-requisites
@@ -231,3 +234,7 @@ spec:
        claimName: pvc-recovered-from-snapshot-1
 
 ```
+
+
+***The information provided in this blog is for general informational purposes only. The views expressed in the blog are solely those of the author and do not represent those of any company or organization. Please use this as a guidance.*** 
+
