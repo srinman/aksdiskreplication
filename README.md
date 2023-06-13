@@ -131,7 +131,7 @@ spec:
 
 #### Option 1
 
-This requires presence of VolumeSnapshot in the remote cluster (I havcen't tested this option yet)
+This requires presence of VolumeSnapshot in the remote cluster (I haven't tested this option yet)
 
 ```
 apiVersion: v1
