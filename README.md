@@ -3,6 +3,8 @@
 
 ## Pre-requisites
 - VolumeSnapshotClass with remote region and resource group
+- Cluster identity should be provided 'Contributor' role to the resource group 
+- This resource group contains source managed disk, snapshot and remote snapshot
 
 
 
