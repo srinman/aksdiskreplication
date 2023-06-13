@@ -1,6 +1,6 @@
 # AKS Managed Disk Cross-region Replication with CSI driver   
 
-With a new feature recently added to AKS Disk CSI driver, it's possible to create a snapshot of a managed disk in one region and replice it to a different region. Review references section links for more details.
+With a new feature recently added to AKS Disk CSI driver, it's possible to create a snapshot of a managed disk in one region and replicate it to a different region. Review references section links for more details.
 
 ## Pre-requisites
 - VolumeSnapshotClass with remote region and resource group
@@ -70,8 +70,6 @@ spec:
       labels:
         app: nginxss
     spec:
-      nodeSelector:
-        cnppool: core
       topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: topology.kubernetes.io/zone
@@ -107,10 +105,14 @@ parameters:
 
 ### Create remote snapshot
 
+
+This following yaml creates one volume snapshot and replicate that to remote region.   
+
 - Create as many snapshots as needed for the volume (PVC)
 - Use different names for each VolumeSnapshot  for eg. azuredisk-volume-snapshot-nginxss-1-remote-v1, azuredisk-volume-snapshot-nginxss-1-remote-v2, etc.
 - Schedule VolumeSnapshot to create snapshots on a regular basis or with Velero
 - Use VolumeSnapshotContent to check the status of the snapshot creation if needed
+
 ```
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
@@ -125,10 +127,11 @@ spec:
 
 ### Create PVC in remote cluster from remote snapshot
 
+*Starting from this step, we are in a different cluster and different region same region where remote snapshot is*
 
 #### Option 1
 
-Question: This may require restoring volumesnapshot content from Velero since remote cluster is not aware of the snapshot content?
+This requires presence of VolumeSnapshot in the remote cluster (I havcen't tested this option yet)
 
 ```
 apiVersion: v1
@@ -151,7 +154,7 @@ spec:
 
 #### Option 2
 
-CSI driver created a remote snapshot but in order to create a PVC from the remote snapshot, we need to create a disk from the remote snapshot.
+CSI driver created a remote snapshot but in order to create a PVC from the remote snapshot, we need to create a disk from the remote snapshot.  This option works well and tested. 
 
 - Create a new disk from the remote snapshot
 - Create a static PV from the new disk
