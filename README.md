@@ -9,6 +9,7 @@ With a new feature recently added to AKS Disk CSI driver, it's possible to creat
 - VolumeSnapshotClass with remote region and resource group
 - Cluster identity should be provided 'Contributor' role to the resource group 
 - This resource group contains source managed disk, snapshot and remote snapshot
+- Cluster version 1.24 or higher
 
 ## References
 https://github.com/kubernetes-sigs/azuredisk-csi-driver/pull/1791
