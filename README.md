@@ -6,9 +6,7 @@
 With a new feature recently added to AKS Disk CSI driver, it's possible to create a snapshot of a managed disk in one region and replicate it to a different region. Review references section links for more details.
 
 ## Pre-requisites
-- VolumeSnapshotClass with remote region and resource group
 - Cluster identity should be provided 'Contributor' role to the resource group 
-- This resource group contains source managed disk, snapshot and remote snapshot
 - Cluster version 1.24 or higher
 
 ## References
@@ -135,7 +133,7 @@ spec:
 
 #### Option 1
 
-This requires presence of VolumeSnapshot in the remote cluster (I haven't tested this option yet)
+This requires presence of VolumeSnapshot in the remote cluster (Velero could be used for bkp and restore of such objects but I haven't tested this option yet)
 
 ```
 apiVersion: v1
